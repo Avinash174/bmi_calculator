@@ -37,7 +37,7 @@ class _InputPageState extends State<InputPage> {
           )),
         ],
       ),
-     
+
     );
   }
 }
