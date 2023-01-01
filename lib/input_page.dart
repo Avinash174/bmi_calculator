@@ -35,6 +35,12 @@ class _InputPageState extends State<InputPage> {
               Expanded(child: new Reusable(color: Color(0xFF1D1E33)),
               )],
           )),
+          Container(
+            color: Color(0xFFEB1555),
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 10.0),
+            height: 80.0   ,
+          ),
         ],
       ),
 
@@ -44,7 +50,7 @@ class _InputPageState extends State<InputPage> {
 class Reusable extends StatelessWidget {
    Reusable({required this.color});
 
-  Color color;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
