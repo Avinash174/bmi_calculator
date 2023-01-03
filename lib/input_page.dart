@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'reusable.dart';
+import 'icon_content.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -20,58 +22,45 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: new Reusable(
+                  child: Reusable(
                     color: Color(0xFF1D1E33),
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.mars,
-                          size: 80.0,
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'MALE',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18.0,
-                            color: Color(0xFF8D8E98),
-                          ),
-                        ),
-                      ],
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                      margin: EdgeInsets.all(15.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1D1E33),
-                        borderRadius: BorderRadius.circular(10.0),
-                      )),
+                  child: Reusable(
+                    color: Color(0xFF1D1E33),
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
           Expanded(
-              child: new Reusable(
+              child: Reusable(
             color: Color(0xFF1D1E33),
-            cardChild: Column(
+            cardChild: Row(
+              children: [
 
+              ],
             ),
           )),
           Expanded(
               child: Row(
             children: [
               Expanded(
-                  child: new Reusable(
+                  child: Reusable(
                 color: Color(0xFF1D1E33),
                 cardChild: Column(),
               )),
               Expanded(
-                child: new Reusable(
+                child: Reusable(
                   color: Color(0xFF1D1E33),
                   cardChild: Column(),
                 ),
@@ -90,19 +79,5 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class Reusable extends StatelessWidget {
-  Reusable({required this.color, required this.cardChild});
-  final Color color;
-  final Widget cardChild;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-    );
-  }
-}
+
+
