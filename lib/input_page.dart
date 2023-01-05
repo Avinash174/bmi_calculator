@@ -4,8 +4,6 @@ import 'reusable.dart';
 import 'icon_content.dart';
 import 'constant.dart';
 
-
-
 enum Gender {
   male,
   female,
@@ -17,7 +15,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  int height=100;
+  int height = 0;
+  int weight = 0;
   Color malecardColor = inactiveColor;
   Color femaleCardColor = inactiveColor;
 
@@ -109,7 +108,7 @@ class _InputPageState extends State<InputPage> {
                       style: labelStyle,
                     )
                   ],
-                ) ,
+                ),
                 SliderTheme(
                   data: SliderTheme.of(context).copyWith(
                     activeTrackColor: Colors.white,
@@ -118,19 +117,18 @@ class _InputPageState extends State<InputPage> {
                     thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
                     overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
                   ),
-                  child: Slider(value: height.toDouble(),
-                      
+                  child: Slider(
+                      value: height.toDouble(),
                       min: 0,
                       max: 220.0,
                       thumbColor: Color(0xFFFB1555),
                       inactiveColor: Color(0xFF8D8E98),
-                      onChanged: (double newValue){
+                      onChanged: (double newValue) {
                         setState(() {
-                         height=newValue.round();
+                          height = newValue.round();
                         });
                       }),
                 ),
-
               ],
             ),
           )),
@@ -140,7 +138,41 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                   child: Reusable(
                 color: activeCardColor,
-                cardChild: Column(),
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'WEIGHT',
+                      style: labelStyle,
+                    ),
+                    Text(
+                      weight.toString(),
+                      style: numberStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                          backgroundColor: Color(0xFF4C4F5E),
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(width: 10,),
+                        FloatingActionButton(
+                          backgroundColor: Color(0xFF4C4F5E),
+                          onPressed: () {},
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               )),
               Expanded(
                 child: Reusable(
@@ -158,6 +190,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-      );
+    );
   }
 }
