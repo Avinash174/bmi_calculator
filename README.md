@@ -1,4 +1,4 @@
-# bmi_calculator
+# BMI Calculator
 
 A New Body Mass Index Calculator.
 
