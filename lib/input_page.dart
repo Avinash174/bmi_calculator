@@ -15,8 +15,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  int height = 0;
-  int weight = 0;
+  int height = 100;
+  int weight = 50;
+  int age=19;
   Color malecardColor = inactiveColor;
   Color femaleCardColor = inactiveColor;
 
@@ -152,32 +153,64 @@ class _InputPageState extends State<InputPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        FloatingActionButton(
-                          backgroundColor: Color(0xFF4C4F5E),
-                          onPressed: () {},
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
+                        RoundIconButton(
+                          iconData: FontAwesomeIcons.minus,
+                          onPressed: () {
+                            setState(() {
+                              weight--;
+                            });
+                          },
                         ),
-                        SizedBox(width: 10,),
-                        FloatingActionButton(
-                          backgroundColor: Color(0xFF4C4F5E),
-                          onPressed: () {},
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                          ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        RoundIconButton(
+                          iconData: FontAwesomeIcons.plus,
+                          onPressed: (){
+                            setState(() {
+                              weight++;
+                            });
+                          },
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               )),
               Expanded(
                 child: Reusable(
                   color: activeCardColor,
-                  cardChild: Column(),
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('AGE',style: labelStyle,),
+                        Text(age.toString(),style: numberStyle,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              iconData: FontAwesomeIcons.plus,
+                              onPressed: (){
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                  ),
                 ),
               )
             ],
@@ -190,6 +223,27 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({required this.iconData, required this.onPressed});
+
+  final IconData iconData;
+  final onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(iconData),
+      onPressed: onPressed,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
