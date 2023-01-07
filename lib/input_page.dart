@@ -221,10 +221,11 @@ class _InputPageState extends State<InputPage> {
               Navigator.push(context, MaterialPageRoute(builder: (_)=>ResultsPage()));
             },
             child: Container(
-              child: Text('CALCULATE',),
+              child: Center(child: Text('CALCULATE',style: LargeButtonTextStyle,)),
               color: bottomContainerColor,
               width: double.infinity,
               margin: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(bottom: 15.0),
               height: bottomContainerHeight,
             ),
           ),

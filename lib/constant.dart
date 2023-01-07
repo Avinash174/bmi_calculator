@@ -11,3 +11,4 @@ const labelStyle = TextStyle(
 );
 
 const numberStyle = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+const LargeButtonTextStyle=TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold);
