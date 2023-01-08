@@ -19,3 +19,10 @@ const resultText = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 22.0,
 );
+const BMITextStyle=TextStyle(
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+);
+const BodyTextStyle=TextStyle(
+  fontSize: 22.0
+);
