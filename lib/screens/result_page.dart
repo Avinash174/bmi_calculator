@@ -17,10 +17,16 @@ class ResultsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: Text(
-              'Your Results',
-              style: titleText,
+          Container(
+            child: Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  'Your Results',
+                  style: titleText,
+                ),
+              ),
             ),
           ),
           Expanded(
