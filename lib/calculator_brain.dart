@@ -24,10 +24,10 @@ class CalculatorBrain {
     if(_bmi>=25){
       return 'You Have Higher Than Nornal Weight. Try To Exercise More';
   }else if(_bmi>18.5){
-      return 'You Have Normal Exercise.Do Regular Exercise And Maintain Yourself Same Like Now';
+      return 'You Have Normal Weight.Do Regular Exercise And Maintain Yourself Same As Now.';
     }
     else{
-      return "You Have A Lower Than Normal Body Weight.You Can Take More Vitamin's And Protein's";
+      return "You Have A Lower Weight Than Normal Body Weight.";
     }
 }
 }
