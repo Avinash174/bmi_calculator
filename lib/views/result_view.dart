@@ -49,12 +49,12 @@ class ResultView extends GetView<BmiController> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              'assets/images/bmi_logo.png',
+              'assets/images/launcher_icon.png',
               height: 36,
               width: 36,
             ),
             const SizedBox(width: 10),
-            Text('YOUR RESULT', style: AppTextStyles.appBarTitle),
+            Text('FITSCOPE', style: AppTextStyles.appBarTitle),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 name: bmi_calculator
-description: A premium BMI Calculator with MVC + GetX architecture.
+description: FitScope - A premium BMI Calculator with MVC + GetX architecture.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -50,6 +50,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/launcher_icon.png"
+  min_sdk_android: 21 # android_min_sdk should match your project's minSdk
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
