@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.avinash.bmi_calculator"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -16,25 +16,47 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = "1.8"
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.avinash.bmi_calculator"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdkVersion = flutter.minSdkVersion
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = flutter.minSdkVersion
+        targetSdk = 35
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+
+        // 16KB page size support (required by Play Store from Nov 2025 onwards)
+        // This enables 16KB ELF alignment for native libraries
+        externalNativeBuild {
+            cmake {
+                cppFlags "-D_FORCE_ALIGN_16K"
+            }
+        }
+        ndk {
+            // Target 64-bit ABIs only — required for 16KB page alignment
+            abiFilters "arm64-v8a", "x86_64"
+        }
+    }
+
+    // 16KB page size — align native .so files in the APK
+    androidResources {
+        noCompress "*.so"
+    }
+
+    packaging {
+        jniLibs {
+            // Use 16KB page-aligned packaging for shared libraries
+            useLegacyPackaging = false
+        }
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // Signing with your configured keystore (do NOT modify)
             signingConfig = signingConfigs.debug
+            minifyEnabled = false
+            shrinkResources = false
         }
     }
 }
