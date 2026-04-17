@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.avinash.bmi_calculator"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -30,7 +30,8 @@ android {
         // This enables 16KB ELF alignment for native libraries
         externalNativeBuild {
             cmake {
-                cppFlags "-D_FORCE_ALIGN_16K"
+                // Correct linker flag for 16KB page alignment
+                cppFlags "-Wl,-z,max-page-size=16384"
             }
         }
         ndk {
@@ -51,12 +52,27 @@ android {
         }
     }
 
+    def keystorePropertiesFile = rootProject.file('key.properties')
+    def keystoreProperties = new Properties()
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
-            // Signing with your configured keystore (do NOT modify)
-            signingConfig = signingConfigs.debug
-            minifyEnabled = false
-            shrinkResources = false
+            // Updated from debug to release signing configuration
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
